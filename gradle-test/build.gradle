@@ -1,0 +1,38 @@
+plugins {
+	id 'java'
+	id 'war'
+	id 'org.springframework.boot' version '2.7.6'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'gradle-test'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+
+
+println project.buildDir // property の値を取得
+
+project.buildDir = "test" // property に値をセット
+println project.buildDir
+
+println "buildDirの値は $buildDir です。" //文字列に property の値を埋め込みます
+println "buildDirの値は ${project.buildDir} です。" //文字列に property の値を埋め込みます
+
+task task1 {
+        println "Hello world!"
+}
